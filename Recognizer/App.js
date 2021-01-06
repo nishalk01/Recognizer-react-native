@@ -3,22 +3,28 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack';
 
 
+
+
 // custom imports
 import MainPage from './components/screen/Main';
-
+import CameraPage from './components/screen/CameraPage';
+import ModelContextProvider from './components/context/ModelContext';
 
 const Stack=createStackNavigator();
 
 
-// total two screen select options and either from storage or from camera
+
+  
 export default function App() {
   return (
+    <ModelContextProvider>
     <NavigationContainer>
        <Stack.Navigator >
          <Stack.Screen name="MainPage"  component={MainPage}  />
-        
-         </Stack.Navigator>
+         <Stack.Screen name="CameraPage"  options={{headerShown: false}} component={CameraPage}/>
+       </Stack.Navigator>
     </NavigationContainer>
+    </ModelContextProvider>
   );
 }
 
